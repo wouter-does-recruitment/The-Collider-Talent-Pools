@@ -12,11 +12,13 @@
     --text:#111827;
     --muted:#6b7280;
     --line:#e5e7eb;
-    --accent:#111827;
-    --soft:#eef2f7;
-    --green:#0f766e;
-    --amber:#a16207;
-    --blue:#1d4ed8;
+    --accent:#5b3df5;
+    --soft:#eef2ff;
+    --green:#0f9f84;
+    --amber:#d97706;
+    --blue:#2563eb;
+    --purple:#7c3aed;
+    --cyan:#0891b2;
   }
   *{box-sizing:border-box}
   body{
@@ -38,7 +40,7 @@
     margin:18px 0 10px;
   }
   .hero-card{
-    background:var(--card);
+    background:linear-gradient(180deg,#ffffff 0%,#faf9ff 100%);
     border:1px solid var(--line);
     border-radius:18px;
     padding:26px 28px;
@@ -49,7 +51,7 @@
     box-shadow:0 1px 2px rgba(0,0,0,.03);
   }
   .hero-kicker{font-size:13px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
-  .hero-num{font-size:64px;line-height:.95;font-weight:850;letter-spacing:-.04em;margin-top:12px}
+  .hero-num{font-size:64px;line-height:.95;font-weight:850;letter-spacing:-.04em;margin-top:12px;color:var(--purple)}
   .hero-foot{font-size:13px;color:var(--muted);margin-top:12px}
 
   .directional{
@@ -64,6 +66,7 @@
   .pool{
     background:var(--card);
     border:1px solid var(--line);
+    border-top:4px solid var(--purple);
     border-radius:16px;
     padding:20px;
   }
@@ -73,7 +76,7 @@
   .metric-row:first-of-type{border-top:none}
   .metric-row span:last-child{font-weight:800}
   .progress{height:8px;background:var(--soft);border-radius:999px;overflow:hidden;margin:8px 0 14px}
-  .bar{height:100%;background:var(--accent);border-radius:999px}
+  .bar{height:100%;background:linear-gradient(90deg,var(--purple),var(--cyan));border-radius:999px}
 
   .table-card{
     background:var(--card);
@@ -124,7 +127,7 @@
     <div class="hero-card">
       <div class="hero-kicker">Targeted outbound profiles</div>
       <div class="hero-num">56</div>
-      <div class="hero-foot">41 DeepTech Founder Pool + 15 Robotics & Autonomous Systems</div>
+      <div class="hero-foot">41 Computing, Chips & AI + 15 Robotics & Autonomous Systems</div>
     </div>
     <div class="hero-card">
       <div class="hero-kicker">Wouter-generated Staff Interviews</div>
@@ -148,7 +151,7 @@
       <div class="metric-row"><span>Outreach sent</span><span>41</span></div>
       <div class="metric-row"><span>Accepted</span><span>23</span></div>
       <div class="progress"><div class="bar" style="width:56%"></div></div>
-      <div class="metric-row"><span>Unique replies</span><span>7</span></div>
+      <div class="metric-row"><span>Dripify replies</span><span>8</span></div>
       <div class="metric-row"><span>Direct / qualified interest</span><span>4+</span></div>
       <div class="metric-row"><span>Staff Interviews from campaign</span><span>1</span></div>
       <div class="metric-row"><span>Key conversion</span><span>Domenico</span></div>
@@ -159,9 +162,9 @@
       <div class="meta">Spain · vertical-specific campaign</div>
 
       <div class="metric-row"><span>Outreach sent</span><span>15</span></div>
-      <div class="metric-row"><span>Accepted</span><span>12</span></div>
-      <div class="progress"><div class="bar" style="width:80%"></div></div>
-      <div class="metric-row"><span>Unique replies</span><span>8</span></div>
+      <div class="metric-row"><span>Accepted</span><span>13</span></div>
+      <div class="progress"><div class="bar" style="width:87%"></div></div>
+      <div class="metric-row"><span>Dripify replies</span><span>9</span></div>
       <div class="metric-row"><span>Direct interest</span><span>6</span></div>
       <div class="metric-row"><span>Future / keep warm</span><span>2</span></div>
       <div class="metric-row"><span>Staff Interviews</span><span>1</span></div>
@@ -184,9 +187,9 @@
 
   <div class="section-title">Reply intelligence</div>
   <div class="grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:16px">
-    <div class="pool"><div class="hero-kicker">Unique replies</div><div class="hero-num" style="font-size:38px">15</div><div class="hero-foot">Across the first two outreach campaigns</div></div>
-    <div class="pool"><div class="hero-kicker">Direct / qualified interest</div><div class="hero-num" style="font-size:38px">9</div><div class="hero-foot">Call interest, CV shared, or explicit opportunity interest</div></div>
-    <div class="pool"><div class="hero-kicker">Future / keep warm</div><div class="hero-num" style="font-size:38px">3</div><div class="hero-foot">Not available now, but wants to stay on the radar</div></div>
+    <div class="pool"><div class="hero-kicker">Unique replies</div><div class="hero-num" style="font-size:38px">17</div><div class="hero-foot">Dripify-recorded replies across the first two campaigns</div></div>
+    <div class="pool"><div class="hero-kicker">Direct / qualified interest</div><div class="hero-num" style="font-size:38px">9+</div><div class="hero-foot">LinkedIn message review: direct interest, call interest, CV shared or explicit openness</div></div>
+    <div class="pool"><div class="hero-kicker">Future / keep warm</div><div class="hero-num" style="font-size:38px">3</div><div class="hero-foot">Not available now, but explicitly wants to stay on the radar</div></div>
     <div class="pool"><div class="hero-kicker">Strategic / connector</div><div class="hero-num" style="font-size:38px">1+</div><div class="hero-foot">Referral, ecosystem or venture opportunity value</div></div>
   </div>
 
@@ -230,6 +233,47 @@
   </div>
 
 
+
+  <div class="section-title">What the replies are telling us</div>
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Insight</th>
+          <th>Evidence from replies</th>
+          <th>Implication</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Vertical-specific outreach resonates</td>
+          <td>Robotics produced 9 replies from 15 outreaches and 13 accepts.</td>
+          <td>Smaller, tightly-defined pools appear to generate stronger engagement than broader founder mapping.</td>
+        </tr>
+        <tr>
+          <td>Interest is broader than active job seeking</td>
+          <td>George, Vasilii and Rubén are not looking now, but explicitly want to stay connected for future opportunities.</td>
+          <td>The Founder Radar is building a long-term bench, not only an immediate candidate funnel.</td>
+        </tr>
+        <tr>
+          <td>Calls are being requested organically</td>
+          <td>Jakob and Yair explicitly asked to speak; Domenico and Stijn also moved into deeper conversations.</td>
+          <td>Reply quality is strong enough to create founder conversations without a hard-sell CTA.</td>
+        </tr>
+        <tr>
+          <td>Outreach creates ecosystem value too</td>
+          <td>Veronica surfaced a potential spin-off opportunity; José Manuel and Vasilii show connector/referral potential.</td>
+          <td>Talent Pool outreach can generate ventures, referrals and ecosystem intelligence in addition to candidates.</td>
+        </tr>
+        <tr>
+          <td>Quality control is visible</td>
+          <td>Pep responded positively and registered, but was placed in Not Founders after review.</td>
+          <td>Founder Radar registration is an intake signal, not an automatic Staff Interview. Experienced-founder criteria remain a real gate.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
   <div class="section-title">Campaign insight</div>
   <div class="table-card">
     <table>
@@ -243,12 +287,12 @@
       <tbody>
         <tr>
           <td>Computing, Chips & AI</td>
-          <td>41 outreach → 23 accepted → 7 replies</td>
+          <td>41 outreach → 23 accepted → 8 replies</td>
           <td>Broader pool, useful founder discovery, but lower response density than Robotics</td>
         </tr>
         <tr>
           <td>Robotics & Autonomous Systems</td>
-          <td>15 outreach → 12 accepted → 8 replies</td>
+          <td>15 outreach → 13 accepted → 9 replies</td>
           <td>Very strong resonance. Vertical-specific sourcing is generating clearer founder intent</td>
         </tr>
         <tr>
@@ -301,9 +345,8 @@
   </div>
 
   <div class="footer-note">
-    <div class="smallcaps">Next update</div>
-    Tomorrow’s Dripify and Manatal exports will be used to reconcile the final accepted / replied / registered / Staff Interview counts.
-    LinkedIn message data will be used to classify reply quality and identify new pending conversations.
+    <div class="smallcaps">Data sources</div>
+    LinkedIn message export for reply quality and conversation signals, Dripify for campaign activity and reply counts, and Manatal for Founder Radar, talent-pool review and Staff Interview progression.
   </div>
 </div>
 </body>
