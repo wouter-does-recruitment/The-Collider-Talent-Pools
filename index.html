@@ -82,15 +82,33 @@
   .footer-note{margin-top:18px;padding:15px 17px;border:1px dashed #cbd5e1;background:#fff;border-radius:12px;font-size:12px;color:var(--muted);line-height:1.55}
   .smallcaps{font-size:11px;text-transform:uppercase;letter-spacing:.07em;font-weight:800;color:var(--muted)}
 
+
+  .timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .week{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;position:relative}
+  .week:before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--purple),var(--cyan));border-radius:14px 14px 0 0}
+  .week-date{font-size:11px;text-transform:uppercase;letter-spacing:.07em;font-weight:800;color:var(--muted);margin:3px 0 8px}
+  .week-num{font-size:30px;font-weight:850;color:var(--purple);line-height:1;margin:7px 0 3px}
+  .week-label{font-size:11px;color:var(--muted);margin-bottom:10px}
+  .week ul{margin:8px 0 0;padding-left:17px}
+  .week li{font-size:12px;line-height:1.45;margin:6px 0;color:#374151}
+  .project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .project{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+  .project h3{margin:0 0 5px;font-size:16px}
+  .project .meta{font-size:12px;color:var(--muted);margin-bottom:14px}
+  .project ul{margin:8px 0 0;padding-left:18px}
+  .project li{font-size:13px;line-height:1.5;margin:7px 0;color:#374151}
+  .project .next{margin-top:14px;padding:10px 12px;background:#faf9ff;border:1px solid #e9e5ff;border-radius:10px;font-size:12px;color:#4c1d95}
+
   @media (max-width:1100px){
-    .grid,.mini-grid{grid-template-columns:repeat(2,1fr)}
+    .grid,.mini-grid,.timeline{grid-template-columns:repeat(2,1fr)}
+    .project-grid{grid-template-columns:1fr}
   }
   @media (max-width:900px){
     .hero{grid-template-columns:1fr}
     .topline{align-items:flex-start;flex-direction:column}
   }
   @media (max-width:720px){
-    .grid,.mini-grid{grid-template-columns:1fr}
+    .grid,.mini-grid,.timeline{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -120,6 +138,107 @@
   <div class="directional">
     <strong>Directional yield: 6.7%</strong> (7 progressed profiles vs 105 structured outbound profiles). 
     This is not a strict cohort conversion rate because the two newest pools are still early and some progressed profiles came through other Wouter-sourced routes.
+  </div>
+
+  <div class="section-title">Weekly activity & Wouter-generated progression</div>
+  <div class="timeline">
+    <div class="week">
+      <div class="week-date">Week of 21 Sep</div>
+      <div class="week-num">0</div>
+      <div class="week-label">named progressions recorded</div>
+      <ul>
+        <li>Computing, Chips &amp; AI and Robotics founder sourcing / outreach active.</li>
+        <li>BraidStent CTO and PLANARIS leadership / technical sourcing running in parallel.</li>
+        <li>Founder-pool outreach structure and vertical messaging established.</li>
+      </ul>
+    </div>
+
+    <div class="week">
+      <div class="week-date">Week of 28 Sep</div>
+      <div class="week-num">2</div>
+      <div class="week-label">Wouter-generated progressions</div>
+      <ul>
+        <li><strong>Jesús García Anguita</strong> screened 29 Sep and progressed via BraidStent sourcing.</li>
+        <li><strong>Domenico Tulli</strong> screened 30 Sep and progressed from Founder Pool outreach.</li>
+        <li>PLANARIS search broadened internationally, with Netherlands / Germany / UK / Scandinavia focus.</li>
+      </ul>
+    </div>
+
+    <div class="week">
+      <div class="week-date">Week of 5 Oct</div>
+      <div class="week-num">3</div>
+      <div class="week-label">Wouter-attributed progressions</div>
+      <ul>
+        <li><strong>Jakob Saalfrank</strong> moved forward from Robotics outreach.</li>
+        <li><strong>Andres Fernando Amarillo Espitia</strong> added to Staff Interview attribution.</li>
+        <li><strong>Javier Matesanz</strong> added through Wouter market / network activity.</li>
+        <li>Founder Radar funnel and reply-intelligence dashboard started.</li>
+      </ul>
+    </div>
+
+    <div class="week">
+      <div class="week-date">Week of 12 Oct</div>
+      <div class="week-num">1</div>
+      <div class="week-label">new progression</div>
+      <ul>
+        <li><strong>Stijn Goossens</strong> progressed into Waiting for Project.</li>
+        <li>Health, Biotech &amp; Life Science individual outreach launched.</li>
+        <li>Energy, Climate &amp; Resources curated sourcing and outreach launched.</li>
+        <li>Veronica Sanz surfaced as a Call for Technologies opportunity.</li>
+      </ul>
+    </div>
+
+    <div class="week">
+      <div class="week-date">Week of 19 Oct</div>
+      <div class="week-num">1</div>
+      <div class="week-label">new Staff Interview so far</div>
+      <ul>
+        <li><strong>Wouter Draijer</strong> progressed to Staff Interview on 21 Oct.</li>
+        <li>Tuncay Koç call scheduled for 22 Oct.</li>
+        <li>Javier Peña Pérez call scheduled for 23 Oct.</li>
+        <li>Role-specific delivery continues across PLANARIS, BraidStent and AUMMIS.</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="section-title">Active project delivery this week</div>
+  <div class="project-grid">
+    <div class="project">
+      <h3>PLANARIS</h3>
+      <div class="meta">COO + RF Engineer / technical leadership</div>
+      <ul>
+        <li><strong>RF Engineers:</strong> Miguel’s feedback is positive; two profiles are expected to proceed to calls with The Collider.</li>
+        <li><strong>COO:</strong> international search continues outside Spain.</li>
+        <li><strong>Technical leadership:</strong> broader CTO / senior space-technology profiles being mapped.</li>
+        <li>The project has strong TTO support, but the scientific team still lacks a clear technical lead / CTO profile.</li>
+        <li>Relevant candidates should be moved into the corresponding PLANARIS vacancies in Manatal Jobs.</li>
+      </ul>
+      <div class="next"><strong>Next:</strong> convert the strongest RF profiles into Collider calls and keep international COO / CTO mapping active.</div>
+    </div>
+
+    <div class="project">
+      <h3>BRAIDSTENT</h3>
+      <div class="meta">CTO / technical co-founder search</div>
+      <ul>
+        <li>Gisela is now connected with Szylvia.</li>
+        <li>More profiles are being added; feedback on the recent profile quality is positive.</li>
+        <li>Relevant candidates should be placed directly into the BraidStent vacancy in Manatal Jobs for cleaner attribution and follow-up.</li>
+      </ul>
+      <div class="next"><strong>Next:</strong> continue adding high-quality technical / MedTech profiles and track all progress inside the vacancy.</div>
+    </div>
+
+    <div class="project">
+      <h3>AUMMIS · Valencia</h3>
+      <div class="meta">New project kicking off</div>
+      <ul>
+        <li>CEO profile is being finalised in the coming week.</li>
+        <li>The existing market / founder map should be presented to the project team.</li>
+        <li>Consuelo will share the technology deck before next Thursday.</li>
+        <li>Full CEO / founder outreach can be refined once the technology deck and final profile are available.</li>
+      </ul>
+      <div class="next"><strong>Next:</strong> review the tech deck, sharpen the CEO scorecard and convert the existing map into the first targeted outreach batch.</div>
+    </div>
   </div>
 
   <div class="section-title">Breakdown by talent pool</div>
