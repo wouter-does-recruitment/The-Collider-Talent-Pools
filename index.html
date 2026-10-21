@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,18 +26,13 @@
     background:var(--bg);
     color:var(--text);
   }
-  .wrap{max-width:1180px;margin:0 auto;padding:36px 24px 56px}
+  .wrap{max-width:1260px;margin:0 auto;padding:36px 24px 56px}
   .topline{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-bottom:24px}
   h1{font-size:30px;line-height:1.1;margin:0 0 8px;font-weight:800;letter-spacing:-.02em}
   .subtitle{color:var(--muted);font-size:14px}
   .badge{font-size:12px;background:#111827;color:#fff;padding:7px 10px;border-radius:999px;white-space:nowrap}
 
-  .hero{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
-    margin:18px 0 10px;
-  }
+  .hero{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0 10px}
   .hero-card{
     background:linear-gradient(180deg,#ffffff 0%,#faf9ff 100%);
     border:1px solid var(--line);
@@ -53,23 +47,12 @@
   .hero-kicker{font-size:13px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
   .hero-num{font-size:64px;line-height:.95;font-weight:850;letter-spacing:-.04em;margin-top:12px;color:var(--purple)}
   .hero-foot{font-size:13px;color:var(--muted);margin-top:12px}
-
-  .directional{
-    margin:10px 0 30px;
-    font-size:12px;
-    color:var(--muted);
-  }
+  .directional{margin:10px 0 30px;font-size:12px;color:var(--muted)}
   .directional strong{color:var(--text)}
 
   .section-title{font-size:18px;font-weight:800;margin:34px 0 14px}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .pool{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-top:4px solid var(--purple);
-    border-radius:16px;
-    padding:20px;
-  }
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .pool{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--purple);border-radius:16px;padding:20px}
   .pool h3{margin:0 0 5px;font-size:16px}
   .pool .meta{color:var(--muted);font-size:12px;margin-bottom:18px}
   .metric-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:13px}
@@ -78,14 +61,15 @@
   .progress{height:8px;background:var(--soft);border-radius:999px;overflow:hidden;margin:8px 0 14px}
   .bar{height:100%;background:linear-gradient(90deg,var(--purple),var(--cyan));border-radius:999px}
 
-  .table-card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:16px;
-    overflow:hidden;
-  }
+  .mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px}
+  .mini-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+  .mini-card .num{font-size:38px;line-height:1;font-weight:850;color:var(--purple);margin-bottom:10px}
+  .mini-card .label{font-size:13px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+  .mini-card .foot{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.45}
+
+  .table-card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
   table{width:100%;border-collapse:collapse;font-size:13px}
-  th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line)}
+  th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
   th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);background:#fafafa}
   tr:last-child td{border-bottom:none}
   .pill{display:inline-block;padding:5px 8px;border-radius:999px;font-size:11px;font-weight:700}
@@ -93,23 +77,20 @@
   .p-blue{background:#eff6ff;color:#1d4ed8}
   .p-amber{background:#fffbeb;color:#a16207}
   .p-gray{background:#f3f4f6;color:#4b5563}
+  .p-purple{background:#f5f3ff;color:#6d28d9}
 
-  .footer-note{
-    margin-top:18px;
-    padding:15px 17px;
-    border:1px dashed #cbd5e1;
-    background:#fff;
-    border-radius:12px;
-    font-size:12px;
-    color:var(--muted);
-    line-height:1.55;
-  }
+  .footer-note{margin-top:18px;padding:15px 17px;border:1px dashed #cbd5e1;background:#fff;border-radius:12px;font-size:12px;color:var(--muted);line-height:1.55}
   .smallcaps{font-size:11px;text-transform:uppercase;letter-spacing:.07em;font-weight:800;color:var(--muted)}
 
+  @media (max-width:1100px){
+    .grid,.mini-grid{grid-template-columns:repeat(2,1fr)}
+  }
   @media (max-width:900px){
-    .grid{grid-template-columns:1fr}
     .hero{grid-template-columns:1fr}
     .topline{align-items:flex-start;flex-direction:column}
+  }
+  @media (max-width:720px){
+    .grid,.mini-grid{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -120,77 +101,85 @@
       <h1>The Collider — Talent Pool Dashboard</h1>
       <div class="subtitle">Founder sourcing, outreach quality and progression into Staff Interview</div>
     </div>
-    <div class="badge">Draft snapshot · 8 Oct 2026</div>
+    <div class="badge">Updated snapshot · 21 Oct 2026</div>
   </div>
 
   <div class="hero">
     <div class="hero-card">
       <div class="hero-kicker">Targeted outbound profiles</div>
-      <div class="hero-num">56</div>
-      <div class="hero-foot">41 Computing, Chips & AI + 15 Robotics & Autonomous Systems</div>
+      <div class="hero-num">105</div>
+      <div class="hero-foot">41 Computing, Chips &amp; AI + 15 Robotics &amp; Autonomous Systems + 20 Health, Biotech &amp; Life Science + 29 Energy, Climate &amp; Resources</div>
     </div>
     <div class="hero-card">
-      <div class="hero-kicker">Wouter-generated Staff Interviews</div>
-      <div class="hero-num">5</div>
-      <div class="hero-foot">Across structured campaigns, role-specific sourcing and network/inbound activity</div>
+      <div class="hero-kicker">Wouter-generated progressed profiles</div>
+      <div class="hero-num">6</div>
+      <div class="hero-foot">5 Staff Interview outcomes + 1 Waiting for Project conversion across structured campaigns, role-specific sourcing and network / inbound activity</div>
     </div>
   </div>
 
   <div class="directional">
-    <strong>Directional yield: 8.9%</strong> (5 Staff Interviews vs 56 structured outbound profiles). 
-    This is not a strict cohort conversion rate because some Staff Interviews came through other Wouter-sourced routes.
+    <strong>Directional yield: 5.7%</strong> (6 progressed profiles vs 105 structured outbound profiles). 
+    This is not a strict cohort conversion rate because the two newest pools are still early and some progressed profiles came through other Wouter-sourced routes.
   </div>
 
   <div class="section-title">Breakdown by talent pool</div>
   <div class="grid">
-
     <div class="pool">
-      <h3>Computing, Chips & AI</h3>
-      <div class="meta">Spain · vertical-specific campaign</div>
-
+      <h3>Computing, Chips &amp; AI</h3>
+      <div class="meta">Spain · mature vertical-specific campaign</div>
       <div class="metric-row"><span>Outreach sent</span><span>41</span></div>
       <div class="metric-row"><span>Accepted</span><span>23</span></div>
       <div class="progress"><div class="bar" style="width:56%"></div></div>
-      <div class="metric-row"><span>Dripify replies</span><span>8</span></div>
+      <div class="metric-row"><span>Replies</span><span>8</span></div>
       <div class="metric-row"><span>Direct / qualified interest</span><span>4+</span></div>
-      <div class="metric-row"><span>Staff Interviews from campaign</span><span>1</span></div>
-      <div class="metric-row"><span>Key conversion</span><span>Domenico</span></div>
+      <div class="metric-row"><span>Progressed profiles</span><span>2</span></div>
+      <div class="metric-row"><span>Key conversions</span><span>Domenico, Stijn</span></div>
     </div>
 
     <div class="pool">
-      <h3>Robotics & Autonomous Systems</h3>
-      <div class="meta">Spain · vertical-specific campaign</div>
-
+      <h3>Robotics &amp; Autonomous Systems</h3>
+      <div class="meta">Spain · mature vertical-specific campaign</div>
       <div class="metric-row"><span>Outreach sent</span><span>15</span></div>
-      <div class="metric-row"><span>Accepted</span><span>13</span></div>
-      <div class="progress"><div class="bar" style="width:87%"></div></div>
-      <div class="metric-row"><span>Dripify replies</span><span>9</span></div>
-      <div class="metric-row"><span>Direct interest</span><span>6</span></div>
+      <div class="metric-row"><span>Accepted</span><span>14</span></div>
+      <div class="progress"><div class="bar" style="width:93%"></div></div>
+      <div class="metric-row"><span>Replies</span><span>10</span></div>
+      <div class="metric-row"><span>Direct interest</span><span>6+</span></div>
       <div class="metric-row"><span>Future / keep warm</span><span>2</span></div>
-      <div class="metric-row"><span>Staff Interviews</span><span>1</span></div>
-      <div class="metric-row"><span>Not-Founder talent generated</span><span>1</span></div>
+      <div class="metric-row"><span>Progressed profiles</span><span>1</span></div>
+      <div class="metric-row"><span>Quality gate outcome</span><span>Pep → Not Founders</span></div>
     </div>
 
     <div class="pool">
-      <h3>Health, Biotech & Life Science</h3>
-      <div class="meta">Spain · sourcing build in progress</div>
+      <h3>Health, Biotech &amp; Life Science</h3>
+      <div class="meta">Spain · new individual outreach batch launched 15 Oct</div>
+      <div class="metric-row"><span>Outreach sent</span><span>20</span></div>
+      <div class="metric-row"><span>Accepted</span><span>6</span></div>
+      <div class="progress"><div class="bar" style="width:30%"></div></div>
+      <div class="metric-row"><span>Replies</span><span>1</span></div>
+      <div class="metric-row"><span>Direct / qualified interest</span><span>0–1</span></div>
+      <div class="metric-row"><span>Progressed profiles</span><span>0</span></div>
+      <div class="metric-row"><span>Status</span><span>Too early to judge</span></div>
+    </div>
 
-      <div class="metric-row"><span>Shortlisted now</span><span>18</span></div>
-      <div class="metric-row"><span>Research leads pending review</span><span>+25</span></div>
-      <div class="progress"><div class="bar" style="width:42%"></div></div>
-      <div class="metric-row"><span>Potential sourcing universe</span><span>~43</span></div>
-      <div class="metric-row"><span>Outreach sent</span><span>0</span></div>
-      <div class="metric-row"><span>Replies</span><span>0</span></div>
-      <div class="metric-row"><span>Staff Interviews</span><span>0</span></div>
+    <div class="pool">
+      <h3>Energy, Climate &amp; Resources</h3>
+      <div class="meta">Spain · 20 curated individual invites + 9 Boolean / Dripify invites</div>
+      <div class="metric-row"><span>Outreach sent</span><span>29</span></div>
+      <div class="metric-row"><span>Accepted</span><span>14</span></div>
+      <div class="progress"><div class="bar" style="width:48%"></div></div>
+      <div class="metric-row"><span>Replies</span><span>5</span></div>
+      <div class="metric-row"><span>Active call conversations</span><span>3</span></div>
+      <div class="metric-row"><span>Progressed profiles</span><span>0 (yet)</span></div>
+      <div class="metric-row"><span>Momentum</span><span>Wouter, Tuncay, Javier</span></div>
     </div>
   </div>
 
   <div class="section-title">Reply intelligence</div>
-  <div class="grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:16px">
-    <div class="pool"><div class="hero-kicker">Unique replies</div><div class="hero-num" style="font-size:38px">17</div><div class="hero-foot">Dripify-recorded replies across the first two campaigns</div></div>
-    <div class="pool"><div class="hero-kicker">Direct / qualified interest</div><div class="hero-num" style="font-size:38px">9+</div><div class="hero-foot">LinkedIn message review: direct interest, call interest, CV shared or explicit openness</div></div>
-    <div class="pool"><div class="hero-kicker">Future / keep warm</div><div class="hero-num" style="font-size:38px">3</div><div class="hero-foot">Not available now, but explicitly wants to stay on the radar</div></div>
-    <div class="pool"><div class="hero-kicker">Strategic / connector</div><div class="hero-num" style="font-size:38px">1+</div><div class="hero-foot">Referral, ecosystem or venture opportunity value</div></div>
+  <div class="mini-grid">
+    <div class="mini-card"><div class="label">Unique replies</div><div class="num">24</div><div class="foot">Combined LinkedIn / Dripify replies across all four pools</div></div>
+    <div class="mini-card"><div class="label">Direct / qualified interest</div><div class="num">12+</div><div class="foot">Direct interest, call interest, more-info requests, CV shared or explicit openness</div></div>
+    <div class="mini-card"><div class="label">Calls scheduled this week</div><div class="num">3</div><div class="foot">Energy pool follow-up calls with Wouter Draijer, Tuncay Koç and Javier Peña Pérez</div></div>
+    <div class="mini-card"><div class="label">Opportunity / ecosystem value</div><div class="num">2+</div><div class="foot">Outreach is surfacing connector value and even Call for Technologies opportunities</div></div>
   </div>
 
   <div class="table-card">
@@ -205,8 +194,13 @@
       <tbody>
         <tr>
           <td><span class="pill p-green">Direct / qualified interest</span></td>
-          <td>Domenico, Stijn, Jakob, Yair, Xavier, Ryaan, Pep Lluis, Jordi, Veronica</td>
+          <td>Domenico, Stijn, Jakob, Yair, Xavier, Ryaan, Pep Lluis, Jordi, Veronica, Wouter Draijer, Javier Peña, Tuncay Koç</td>
           <td>Real founder conversations, not just connection accepts</td>
+        </tr>
+        <tr>
+          <td><span class="pill p-purple">Call scheduled</span></td>
+          <td>Wouter Draijer (today), Tuncay Koç (tomorrow), Javier Peña Pérez (Friday)</td>
+          <td>Energy is already moving from reply quality into real qualification conversations</td>
         </tr>
         <tr>
           <td><span class="pill p-blue">Future / keep warm</span></td>
@@ -225,14 +219,12 @@
         </tr>
         <tr>
           <td><span class="pill p-gray">Neutral / polite</span></td>
-          <td>Guillermo</td>
-          <td>Connection made, but no clear intent yet</td>
+          <td>Guillermo, Natalia Castejon Savordelli, Pablo M. Vidarte</td>
+          <td>Connection made, positive signal, but no clear next-step intent yet</td>
         </tr>
       </tbody>
     </table>
   </div>
-
-
 
   <div class="section-title">What the replies are telling us</div>
   <div class="table-card">
@@ -247,8 +239,13 @@
       <tbody>
         <tr>
           <td>Vertical-specific outreach resonates</td>
-          <td>Robotics produced 9 replies from 15 outreaches and 13 accepts.</td>
-          <td>Smaller, tightly-defined pools appear to generate stronger engagement than broader founder mapping.</td>
+          <td>Robotics produced 10 replies from 15 outreaches and 14 accepts.</td>
+          <td>Smaller, tightly-defined pools still generate the strongest engagement.</td>
+        </tr>
+        <tr>
+          <td>Energy is quickly creating live conversations</td>
+          <td>5 replies from 29 outreaches, with 3 calls already scheduled in the same week.</td>
+          <td>The Energy pool has early signs of moving faster into founder qualification than Health.</td>
         </tr>
         <tr>
           <td>Interest is broader than active job seeking</td>
@@ -256,13 +253,8 @@
           <td>The Founder Radar is building a long-term bench, not only an immediate candidate funnel.</td>
         </tr>
         <tr>
-          <td>Calls are being requested organically</td>
-          <td>Jakob and Yair explicitly asked to speak; Domenico and Stijn also moved into deeper conversations.</td>
-          <td>Reply quality is strong enough to create founder conversations without a hard-sell CTA.</td>
-        </tr>
-        <tr>
           <td>Outreach creates ecosystem value too</td>
-          <td>Veronica surfaced a potential spin-off opportunity; José Manuel and Vasilii show connector/referral potential.</td>
+          <td>Veronica surfaced a potential spin-off / technology opportunity; José Manuel and Vasilii show connector / referral potential.</td>
           <td>Talent Pool outreach can generate ventures, referrals and ecosystem intelligence in addition to candidates.</td>
         </tr>
         <tr>
@@ -286,19 +278,24 @@
       </thead>
       <tbody>
         <tr>
-          <td>Computing, Chips & AI</td>
+          <td>Computing, Chips &amp; AI</td>
           <td>41 outreach → 23 accepted → 8 replies</td>
           <td>Broader pool, useful founder discovery, but lower response density than Robotics</td>
         </tr>
         <tr>
-          <td>Robotics & Autonomous Systems</td>
-          <td>15 outreach → 13 accepted → 9 replies</td>
-          <td>Very strong resonance. Vertical-specific sourcing is generating clearer founder intent</td>
+          <td>Robotics &amp; Autonomous Systems</td>
+          <td>15 outreach → 14 accepted → 10 replies</td>
+          <td>Very strong resonance. Vertical-specific sourcing is generating the clearest founder intent</td>
         </tr>
         <tr>
-          <td>Health, Biotech & Life Science</td>
-          <td>18 shortlisted + ~25 research leads</td>
-          <td>Next vertical is already being built before outreach starts</td>
+          <td>Health, Biotech &amp; Life Science</td>
+          <td>20 outreach → 6 accepted → 1 reply</td>
+          <td>Too early to judge. The outreach batch is new and needs more time to mature.</td>
+        </tr>
+        <tr>
+          <td>Energy, Climate &amp; Resources</td>
+          <td>29 outreach → 14 accepted → 5 replies → 3 calls scheduled</td>
+          <td>Early but promising. This pool is already converting into concrete conversations.</td>
         </tr>
       </tbody>
     </table>
@@ -316,10 +313,11 @@
       </thead>
       <tbody>
         <tr><td>Domenico Tulli</td><td>DeepTech Founder Pool outreach</td><td><span class="pill p-green">Staff Interview</span></td></tr>
-        <tr><td>Jakob Saalfrank</td><td>Robotics & Autonomous Systems outreach</td><td><span class="pill p-green">Staff Interview</span></td></tr>
+        <tr><td>Jakob Saalfrank</td><td>Robotics &amp; Autonomous Systems outreach</td><td><span class="pill p-green">Staff Interview</span></td></tr>
         <tr><td>Jesús García Anguita</td><td>BraidStent / role-specific sourcing</td><td><span class="pill p-green">Staff Interview</span></td></tr>
         <tr><td>Andres Fernando Amarillo Espitia</td><td>Broader Wouter sourcing pool</td><td><span class="pill p-green">Staff Interview</span></td></tr>
         <tr><td>Javier Matesanz</td><td>Inbound from Wouter market / network activity</td><td><span class="pill p-green">Staff Interview</span></td></tr>
+        <tr><td>Stijn Goossens</td><td>Computing, Chips &amp; AI outreach</td><td><span class="pill p-blue">Waiting for Project</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -340,13 +338,19 @@
           <td><span class="pill p-blue">Talent Pool · Not Founders</span></td>
           <td>Strong robotics / technical leadership profile, but does not meet experienced-founder threshold</td>
         </tr>
+        <tr>
+          <td>Consultant / freelance profiles in Energy</td>
+          <td><span class="pill p-gray">Excluded from current push</span></td>
+          <td>Too consultant / ZZP / freelance-heavy or too far from the Founder Radar brief</td>
+        </tr>
       </tbody>
     </table>
   </div>
 
   <div class="footer-note">
     <div class="smallcaps">Data sources</div>
-    LinkedIn message export for reply quality and conversation signals, Dripify for campaign activity and reply counts, and Manatal for Founder Radar, talent-pool review and Staff Interview progression.
+    LinkedIn message export for reply quality and conversation signals, Dripify for campaign activity and reply counts, and Manatal for Founder Radar, talent-pool review and Staff Interview progression. 
+    Energy call updates included: Wouter Draijer (today), Tuncay Koç (tomorrow) and Javier Peña Pérez (Friday).
   </div>
 </div>
 </body>
