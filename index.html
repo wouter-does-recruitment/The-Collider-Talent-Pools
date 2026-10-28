@@ -1,476 +1,333 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>The Collider — Talent Pool Dashboard</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Collider — Operating Talent Dashboard</title>
 <style>
-  :root{
-    --bg:#f6f7f9;
-    --card:#ffffff;
-    --text:#111827;
-    --muted:#6b7280;
-    --line:#e5e7eb;
-    --accent:#5b3df5;
-    --soft:#eef2ff;
-    --green:#0f9f84;
-    --amber:#d97706;
-    --blue:#2563eb;
-    --purple:#7c3aed;
-    --cyan:#0891b2;
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0;
-    font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background:var(--bg);
-    color:var(--text);
-  }
-  .wrap{max-width:1260px;margin:0 auto;padding:36px 24px 56px}
-  .topline{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-bottom:24px}
-  h1{font-size:30px;line-height:1.1;margin:0 0 8px;font-weight:800;letter-spacing:-.02em}
-  .subtitle{color:var(--muted);font-size:14px}
-  .badge{font-size:12px;background:#111827;color:#fff;padding:7px 10px;border-radius:999px;white-space:nowrap}
+:root{--bg:#f6f7f9;--card:#fff;--text:#111827;--muted:#6b7280;--line:#e5e7eb;--purple:#6d3df5;--cyan:#0891b2;--green:#059669;--amber:#d97706;--blue:#2563eb;}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{max-width:1260px;margin:auto;padding:34px 24px 56px} .top{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:22px}
+h1{margin:0 0 8px;font-size:31px;letter-spacing:-.03em} .sub{color:var(--muted);font-size:14px;max-width:760px;line-height:1.5}
+.badge{background:#111827;color:white;padding:8px 11px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
+.hero{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:22px 0 12px}
+.hero .card{background:linear-gradient(180deg,#fff,#faf9ff);border:1px solid var(--line);border-radius:18px;padding:20px;min-height:145px}
+.kicker{text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-size:11px;font-weight:800} .big{font-size:50px;font-weight:850;line-height:1;margin:12px 0 9px;color:var(--purple)}
+.foot{font-size:12px;color:var(--muted);line-height:1.45} .section{margin-top:34px} .section h2{font-size:18px;margin:0 0 13px}
+.section-intro{font-size:13px;color:var(--muted);margin:-5px 0 15px;line-height:1.5}
+.funnel{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.metric{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px} .metric .n{font-size:34px;font-weight:850;color:var(--purple)} .metric .l{font-size:12px;color:var(--muted);margin-top:5px}
+.table{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden} table{width:100%;border-collapse:collapse;font-size:13px} th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top} th{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:#fafafa} tr:last-child td{border-bottom:none}
+.pill{display:inline-block;padding:5px 8px;border-radius:999px;font-size:10px;font-weight:800} .pill.green{background:#ecfdf5;color:#047857} .pill.blue{background:#eff6ff;color:#1d4ed8} .pill.purple{background:#f5f3ff;color:#6d28d9} .pill.gray{background:#f3f4f6;color:#4b5563} .pill.amber{background:#fffbeb;color:#a16207}
+.pools{display:grid;grid-template-columns:repeat(4,1fr);gap:14px} .pool-card{background:#fff;border:1px solid var(--line);border-top:4px solid var(--purple);border-radius:16px;padding:18px} .pool-top{display:flex;justify-content:space-between;gap:10px} .pool-card h3{margin:0;font-size:15px} .meta,.tiny{font-size:11px;color:var(--muted)} .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0 12px} .stats div{background:#f9fafb;border-radius:10px;padding:9px} .stats b{font-size:21px;display:block} .stats span{font-size:10px;color:var(--muted)} .progress{height:7px;background:#eef2ff;border-radius:999px;overflow:hidden} .progress i{display:block;height:100%;background:linear-gradient(90deg,var(--purple),var(--cyan));border-radius:999px} .note{font-size:11px;color:var(--muted);line-height:1.5;margin-top:10px}
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px} .project{background:#fff;border:1px solid var(--line);border-radius:16px;padding:19px} .project h3{margin:0 0 4px;font-size:16px} .project ul{margin:11px 0 0;padding-left:18px} .project li{font-size:12px;line-height:1.5;margin:7px 0;color:#374151} .next{margin-top:13px;padding:10px 11px;border-radius:10px;background:#faf9ff;border:1px solid #e9e5ff;font-size:11px;color:#4c1d95}.project-link{display:inline-block;margin-top:12px;padding:8px 11px;border-radius:9px;background:#111827;color:#fff;text-decoration:none;font-size:11px;font-weight:800}.project-link:hover{opacity:.88}
+.callout{padding:14px 16px;border:1px solid #ddd6fe;background:#faf9ff;border-radius:13px;font-size:12px;line-height:1.55;color:#4c1d95;margin-top:12px}
+.footer{margin-top:34px;border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:11px;line-height:1.5}
 
-  .hero{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0 10px}
-  .hero-card{
-    background:linear-gradient(180deg,#ffffff 0%,#faf9ff 100%);
-    border:1px solid var(--line);
-    border-radius:18px;
-    padding:26px 28px;
-    min-height:156px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    box-shadow:0 1px 2px rgba(0,0,0,.03);
-  }
-  .hero-kicker{font-size:13px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
-  .hero-num{font-size:64px;line-height:.95;font-weight:850;letter-spacing:-.04em;margin-top:12px;color:var(--purple)}
-  .hero-foot{font-size:13px;color:var(--muted);margin-top:12px}
-  .directional{margin:10px 0 30px;font-size:12px;color:var(--muted)}
-  .directional strong{color:var(--text)}
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.week{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;position:relative}
+.week:before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--purple),var(--cyan));border-radius:16px 16px 0 0}
+.week-date{font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:var(--muted);margin:3px 0 8px}
+.week h3{font-size:15px;margin:0 0 8px}.week-num{font-size:34px;font-weight:850;line-height:1;color:var(--purple);margin:8px 0 3px}.week-num-label{font-size:10px;text-transform:uppercase;letter-spacing:.07em;font-weight:800;color:var(--muted);margin-bottom:11px}
+.week ul{margin:8px 0 0;padding-left:17px}
+.week li{font-size:12px;line-height:1.5;margin:6px 0;color:#374151}
+.week .tagline{font-size:11px;color:var(--muted);margin-bottom:8px}
 
-  .section-title{font-size:18px;font-weight:800;margin:34px 0 14px}
-  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-  .pool{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--purple);border-radius:16px;padding:20px}
-  .pool h3{margin:0 0 5px;font-size:16px}
-  .pool .meta{color:var(--muted);font-size:12px;margin-bottom:18px}
-  .metric-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:13px}
-  .metric-row:first-of-type{border-top:none}
-  .metric-row span:last-child{font-weight:800}
-  .progress{height:8px;background:var(--soft);border-radius:999px;overflow:hidden;margin:8px 0 14px}
-  .bar{height:100%;background:linear-gradient(90deg,var(--purple),var(--cyan));border-radius:999px}
-
-  .mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px}
-  .mini-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
-  .mini-card .num{font-size:38px;line-height:1;font-weight:850;color:var(--purple);margin-bottom:10px}
-  .mini-card .label{font-size:13px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
-  .mini-card .foot{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.45}
-
-  .table-card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
-  table{width:100%;border-collapse:collapse;font-size:13px}
-  th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-  th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);background:#fafafa}
-  tr:last-child td{border-bottom:none}
-  .pill{display:inline-block;padding:5px 8px;border-radius:999px;font-size:11px;font-weight:700}
-  .p-green{background:#ecfdf5;color:#047857}
-  .p-blue{background:#eff6ff;color:#1d4ed8}
-  .p-amber{background:#fffbeb;color:#a16207}
-  .p-gray{background:#f3f4f6;color:#4b5563}
-  .p-purple{background:#f5f3ff;color:#6d28d9}
-
-  .footer-note{margin-top:18px;padding:15px 17px;border:1px dashed #cbd5e1;background:#fff;border-radius:12px;font-size:12px;color:var(--muted);line-height:1.55}
-  .smallcaps{font-size:11px;text-transform:uppercase;letter-spacing:.07em;font-weight:800;color:var(--muted)}
-
-
-  .timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-  .week{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;position:relative}
-  .week:before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--purple),var(--cyan));border-radius:14px 14px 0 0}
-  .week-date{font-size:11px;text-transform:uppercase;letter-spacing:.07em;font-weight:800;color:var(--muted);margin:3px 0 8px}
-  .week-num{font-size:30px;font-weight:850;color:var(--purple);line-height:1;margin:7px 0 3px}
-  .week-label{font-size:11px;color:var(--muted);margin-bottom:10px}
-  .week ul{margin:8px 0 0;padding-left:17px}
-  .week li{font-size:12px;line-height:1.45;margin:6px 0;color:#374151}
-  .project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .project{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
-  .project h3{margin:0 0 5px;font-size:16px}
-  .project .meta{font-size:12px;color:var(--muted);margin-bottom:14px}
-  .project ul{margin:8px 0 0;padding-left:18px}
-  .project li{font-size:13px;line-height:1.5;margin:7px 0;color:#374151}
-  .project .next{margin-top:14px;padding:10px 12px;background:#faf9ff;border:1px solid #e9e5ff;border-radius:10px;font-size:12px;color:#4c1d95}
-
-  @media (max-width:1100px){
-    .grid,.mini-grid,.timeline{grid-template-columns:repeat(2,1fr)}
-    .project-grid{grid-template-columns:1fr}
-  }
-  @media (max-width:900px){
-    .hero{grid-template-columns:1fr}
-    .topline{align-items:flex-start;flex-direction:column}
-  }
-  @media (max-width:720px){
-    .grid,.mini-grid,.timeline{grid-template-columns:1fr}
-  }
+@media(max-width:1000px){.hero,.pools,.funnel,.timeline{grid-template-columns:repeat(2,1fr)}.project-grid{grid-template-columns:1fr}}
+@media(max-width:650px){.hero,.pools,.funnel,.timeline{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="topline">
+  <div class="top">
     <div>
-      <h1>The Collider — Talent Pool Dashboard</h1>
-      <div class="subtitle">Founder sourcing, outreach quality and progression into Staff Interview</div>
+      <h1>The Collider — Operating Talent Dashboard</h1>
+      <div class="sub">Founder Radar, Talent Pool engagement and active venture delivery. Current Manatal stages are separated from historical sourcing and progression events.</div>
     </div>
-    <div class="badge">Updated snapshot · 21 Oct 2026</div>
+    <div class="badge">Updated · 28 Oct 2026</div>
   </div>
 
   <div class="hero">
-    <div class="hero-card">
-      <div class="hero-kicker">Targeted outbound profiles</div>
-      <div class="hero-num">105</div>
-      <div class="hero-foot">41 Computing, Chips &amp; AI + 15 Robotics &amp; Autonomous Systems + 20 Health, Biotech &amp; Life Science + 29 Energy, Climate &amp; Resources</div>
-    </div>
-    <div class="hero-card">
-      <div class="hero-kicker">Wouter-generated progressed profiles</div>
-      <div class="hero-num">7</div>
-      <div class="hero-foot">6 Staff Interview outcomes + 1 Waiting for Project conversion across structured campaigns, role-specific sourcing and network / inbound activity</div>
+    <div class="card"><div class="kicker">Structured Talent Pool outbound</div><div class="big">105</div><div class="foot">Historical founder outreach baseline across Computing, Robotics, Health and Energy.</div></div>
+    <div class="card"><div class="kicker">Current Founder Pool</div><div class="big">15</div><div class="foot">6 at Staff Interview · 9 Waiting for Project.</div></div>
+    <div class="card"><div class="kicker">Wouter-generated progressions</div><div class="big">8</div><div class="foot">Corrected attribution including Anna Warchalowska. 3 currently Staff Interview · 5 Waiting for Project.</div></div>
+    <div class="card"><div class="kicker">PLANARIS COO sourced</div><div class="big">37</div><div class="foot">International Dripify search. 6 currently in Manatal · 1 at Matchmaking.</div></div>
+  </div>
+
+  <div class="callout"><strong>Reading the dashboard:</strong> “progressed” means Wouter generated a profile that moved into the Founder funnel. The current Manatal stage is shown separately, so profiles that later moved to Waiting for Project are not lost from attribution.</div>
+
+
+  <div class="section">
+    <h2>Weekly breakdown</h2>
+    <div class="section-intro">Weekly Founder Pool output plus the key sourcing and delivery activity behind it. The large number shows new Wouter-generated Founder Pool progressions recorded in that week, including attribution corrections when they materially change the total.</div>
+    <div class="timeline">
+      <div class="week">
+        <div class="week-date">Week of 21 Sep</div>
+        <div class="week-num">0</div><div class="week-num-label">new Wouter-generated Founder Pool progressions</div>
+        <h3>Founder Pool structure goes live</h3>
+        <div class="tagline">Talent Pool + role-specific sourcing</div>
+        <ul>
+          <li>Computing, Chips &amp; AI and Robotics founder sourcing active.</li>
+          <li>BraidStent CTO and PLANARIS sourcing running in parallel.</li>
+          <li>Founder Pool messaging, intake and vertical structure established.</li>
+        </ul>
+      </div>
+
+      <div class="week">
+        <div class="week-date">Week of 28 Sep</div>
+        <div class="week-num">2</div><div class="week-num-label">new Wouter-generated Founder Pool progressions</div>
+        <h3>First clear progressions</h3>
+        <div class="tagline">2 Wouter-generated profiles progressed</div>
+        <ul>
+          <li>Jesús García Anguita screened via BraidStent sourcing.</li>
+          <li>Domenico Tulli screened from Founder Pool outreach.</li>
+          <li>PLANARIS search broadened internationally.</li>
+        </ul>
+      </div>
+
+      <div class="week">
+        <div class="week-date">Week of 5 Oct</div>
+        <div class="week-num">3</div><div class="week-num-label">new Wouter-generated Founder Pool progressions</div>
+        <h3>Founder funnel expands</h3>
+        <div class="tagline">3 additional Wouter-attributed progressions</div>
+        <ul>
+          <li>Jakob Saalfrank moved forward from Robotics outreach.</li>
+          <li>Andres Fernando Amarillo Espitia progressed.</li>
+          <li>Javier Matesanz added through Wouter market / network activity.</li>
+          <li>Founder Radar attribution and dashboarding became more structured.</li>
+        </ul>
+      </div>
+
+      <div class="week">
+        <div class="week-date">Week of 12 Oct</div>
+        <div class="week-num">1</div><div class="week-num-label">new Wouter-generated Founder Pool progression</div>
+        <h3>New pools launched</h3>
+        <div class="tagline">Health + Energy added</div>
+        <ul>
+          <li>Stijn Goossens progressed into Waiting for Project.</li>
+          <li>Health, Biotech &amp; Life Science outreach launched.</li>
+          <li>Energy, Climate &amp; Resources sourcing launched.</li>
+          <li>Veronica Sanz surfaced as a potential technology / ecosystem lead.</li>
+        </ul>
+      </div>
+
+      <div class="week">
+        <div class="week-date">Week of 19 Oct</div>
+        <div class="week-num">1</div><div class="week-num-label">new Wouter-generated Founder Pool progression</div>
+        <h3>Energy starts converting</h3>
+        <div class="tagline">Calls + first Energy progression</div>
+        <ul>
+          <li>Wouter Draijer progressed from Energy outreach.</li>
+          <li>Tuncay Koç call completed and repositioned as mentor / industry expert rather than founder candidate.</li>
+          <li>Javier Peña Pérez call completed and retained as Founder Pool / ecosystem profile.</li>
+          <li>AUMMIS CEO market map moved into active review.</li>
+        </ul>
+      </div>
+
+      <div class="week">
+        <div class="week-date">Week of 26 Oct</div>
+        <div class="week-num">1</div><div class="week-num-label">new Wouter-generated Founder Pool progression</div>
+        <h3>Role delivery deepens</h3>
+        <div class="tagline">1 Founder Pool progression recorded · plus PLANARIS and AUMMIS delivery</div>
+        <ul>
+          <li>PLANARIS COO international batch expanded to 37 sourced profiles.</li>
+          <li>Jim Volp moved into Shortlisted · First Call and was presented to Consuelo / Miguel.</li><li>PLANARIS movements are shown here as delivery activity and are not included in the weekly Founder Pool count.</li>
+          <li>Álvaro Escarpenter reached Matchmaking.</li>
+          <li>Anna Warchalowska attribution corrected and added to the Wouter-generated progression total.</li>
+          <li>AUMMIS Female Health / MedTech market map consolidated into a live review dashboard.</li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <div class="directional">
-    <strong>Directional yield: 6.7%</strong> (7 progressed profiles vs 105 structured outbound profiles). 
-    This is not a strict cohort conversion rate because the two newest pools are still early and some progressed profiles came through other Wouter-sourced routes.
-  </div>
-
-  <div class="section-title">Weekly activity & Wouter-generated progression</div>
-  <div class="timeline">
-    <div class="week">
-      <div class="week-date">Week of 21 Sep</div>
-      <div class="week-num">0</div>
-      <div class="week-label">named progressions recorded</div>
-      <ul>
-        <li>Computing, Chips &amp; AI and Robotics founder sourcing / outreach active.</li>
-        <li>BraidStent CTO and PLANARIS leadership / technical sourcing running in parallel.</li>
-        <li>Founder-pool outreach structure and vertical messaging established.</li>
-      </ul>
-    </div>
-
-    <div class="week">
-      <div class="week-date">Week of 28 Sep</div>
-      <div class="week-num">2</div>
-      <div class="week-label">Wouter-generated progressions</div>
-      <ul>
-        <li><strong>Jesús García Anguita</strong> screened 29 Sep and progressed via BraidStent sourcing.</li>
-        <li><strong>Domenico Tulli</strong> screened 30 Sep and progressed from Founder Pool outreach.</li>
-        <li>PLANARIS search broadened internationally, with Netherlands / Germany / UK / Scandinavia focus.</li>
-      </ul>
-    </div>
-
-    <div class="week">
-      <div class="week-date">Week of 5 Oct</div>
-      <div class="week-num">3</div>
-      <div class="week-label">Wouter-attributed progressions</div>
-      <ul>
-        <li><strong>Jakob Saalfrank</strong> moved forward from Robotics outreach.</li>
-        <li><strong>Andres Fernando Amarillo Espitia</strong> added to Staff Interview attribution.</li>
-        <li><strong>Javier Matesanz</strong> added through Wouter market / network activity.</li>
-        <li>Founder Radar funnel and reply-intelligence dashboard started.</li>
-      </ul>
-    </div>
-
-    <div class="week">
-      <div class="week-date">Week of 12 Oct</div>
-      <div class="week-num">1</div>
-      <div class="week-label">new progression</div>
-      <ul>
-        <li><strong>Stijn Goossens</strong> progressed into Waiting for Project.</li>
-        <li>Health, Biotech &amp; Life Science individual outreach launched.</li>
-        <li>Energy, Climate &amp; Resources curated sourcing and outreach launched.</li>
-        <li>Veronica Sanz surfaced as a Call for Technologies opportunity.</li>
-      </ul>
-    </div>
-
-    <div class="week">
-      <div class="week-date">Week of 19 Oct</div>
-      <div class="week-num">1</div>
-      <div class="week-label">new Staff Interview so far</div>
-      <ul>
-        <li><strong>Wouter Draijer</strong> progressed to Staff Interview on 21 Oct.</li>
-        <li>Tuncay Koç call scheduled for 22 Oct.</li>
-        <li>Javier Peña Pérez call scheduled for 23 Oct.</li>
-        <li>Role-specific delivery continues across PLANARIS, BraidStent and AUMMIS.</li>
-      </ul>
+  <div class="section">
+    <h2>Current Founder Radar funnel</h2>
+    <div class="funnel">
+      <div class="metric"><div class="n">15</div><div class="l">Founder Pool profiles</div></div>
+      <div class="metric"><div class="n">6</div><div class="l">Staff Interview now</div></div>
+      <div class="metric"><div class="n">9</div><div class="l">Waiting for Project now</div></div>
+      <div class="metric"><div class="n">6</div><div class="l">Talent Pool · Not Founders</div></div>
     </div>
   </div>
 
+  <div class="section">
+    <h2>Wouter attribution</h2>
+    <div class="section-intro">Profiles sourced through Wouter’s Founder Pool, role-specific sourcing, network activity or direct outreach that progressed into the Founder funnel.</div>
+    <div class="table"><table>
+      <thead><tr><th>Profile</th><th>Current role</th><th>Company</th><th>Current Manatal stage</th></tr></thead>
+      <tbody><tr>
+      <td><strong>Anna Warchalowska</strong></td>
+      <td>Co-Founder &amp; CEO</td>
+      <td>CIRQUEL</td>
+      <td><span class="pill green">Staff Interview</span></td>
+    </tr>
+<tr>
+      <td><strong>Javier MATESANZ</strong></td>
+      <td>General Director</td>
+      <td>INCAPTO</td>
+      <td><span class="pill green">Staff Interview</span></td>
+    </tr>
+<tr>
+      <td><strong>Andres Fernando Amarillo Espitia</strong></td>
+      <td>Chief Technology Officer</td>
+      <td>Cyber Surgery S.L.</td>
+      <td><span class="pill green">Staff Interview</span></td>
+    </tr>
+<tr>
+      <td><strong>Wouter Draijer</strong></td>
+      <td>CEO &amp; co-founder</td>
+      <td>SolarMente</td>
+      <td><span class="pill blue">Waiting for Project</span></td>
+    </tr>
+<tr>
+      <td><strong>STIJN GOOSSENS</strong></td>
+      <td>Co-founder, CTO &amp; Chairman of the Board</td>
+      <td>qurv (ICFO spin-off)</td>
+      <td><span class="pill blue">Waiting for Project</span></td>
+    </tr>
+<tr>
+      <td><strong>Jakob Saalfrank</strong></td>
+      <td>Co-Founder &amp; CEO</td>
+      <td>Grasshopper Air Mobility</td>
+      <td><span class="pill blue">Waiting for Project</span></td>
+    </tr>
+<tr>
+      <td><strong>Domenico Tulli</strong></td>
+      <td>Co-founder &amp; Technical Advisor</td>
+      <td>QSENSATO SRL.</td>
+      <td><span class="pill blue">Waiting for Project</span></td>
+    </tr>
+<tr>
+      <td><strong>Jesús García Anguita</strong></td>
+      <td>CTO | CPTO | HealthTech &amp; IoT Product Leader</td>
+      <td>Owners Partners</td>
+      <td><span class="pill blue">Waiting for Project</span></td>
+    </tr></tbody>
+    </table></div>
+  </div>
 
-  <div class="section-title">Active project delivery this week</div>
-  <div class="project-grid">
-    <div class="project">
-      <h3>PLANARIS</h3>
-      <div class="meta">COO + RF Engineer / technical leadership</div>
-      <ul>
-        <li><strong>RF Engineers:</strong> Miguel’s feedback is positive; two profiles are expected to proceed to calls with The Collider.</li>
-        <li><strong>COO:</strong> international search continues outside Spain.</li>
-        <li><strong>Technical leadership:</strong> broader CTO / senior space-technology profiles being mapped.</li>
-        <li>The project has strong TTO support, but the scientific team still lacks a clear technical lead / CTO profile.</li>
-        <li>Relevant candidates should be moved into the corresponding PLANARIS vacancies in Manatal Jobs.</li>
-      </ul>
-      <div class="next"><strong>Next:</strong> convert the strongest RF profiles into Collider calls and keep international COO / CTO mapping active.</div>
+  <div class="section">
+    <h2>Talent Pool campaign performance</h2>
+    <div class="section-intro">Historical campaign cohorts retained from the previous dashboard. These are engagement metrics, not current Manatal stages.</div>
+    <div class="pools">
+    <div class="pool-card">
+      <div class="pool-top"><div><h3>Computing, Chips & AI</h3><div class="meta">Mature cohort</div></div><span class="tiny">41 sourced</span></div>
+      <div class="stats">
+        <div><b>23</b><span>accepted</span></div>
+        <div><b>8</b><span>replies</span></div>
+        <div><b>2</b><span>progressed</span></div>
+      </div>
+      <div class="progress"><i style="width:56%"></i></div>
+      <div class="note">23/41 accepted (56%) · 8/41 replied (20%)<br><strong>Domenico, Stijn</strong></div>
     </div>
-
-    <div class="project">
-      <h3>BRAIDSTENT</h3>
-      <div class="meta">CTO / technical co-founder search</div>
-      <ul>
-        <li>Gisela is now connected with Szylvia.</li>
-        <li>More profiles are being added; feedback on the recent profile quality is positive.</li>
-        <li>Relevant candidates should be placed directly into the BraidStent vacancy in Manatal Jobs for cleaner attribution and follow-up.</li>
-      </ul>
-      <div class="next"><strong>Next:</strong> continue adding high-quality technical / MedTech profiles and track all progress inside the vacancy.</div>
+    
+    <div class="pool-card">
+      <div class="pool-top"><div><h3>Robotics & Autonomous Systems</h3><div class="meta">Mature cohort</div></div><span class="tiny">15 sourced</span></div>
+      <div class="stats">
+        <div><b>14</b><span>accepted</span></div>
+        <div><b>10</b><span>replies</span></div>
+        <div><b>1</b><span>progressed</span></div>
+      </div>
+      <div class="progress"><i style="width:93%"></i></div>
+      <div class="note">14/15 accepted (93%) · 10/15 replied (67%)<br><strong>Jakob</strong></div>
     </div>
-
-    <div class="project">
-      <h3>AUMMIS · Valencia</h3>
-      <div class="meta">New project kicking off</div>
-      <ul>
-        <li>CEO profile is being finalised in the coming week.</li>
-        <li>The existing market / founder map should be presented to the project team.</li>
-        <li>Consuelo will share the technology deck before next Thursday.</li>
-        <li>Full CEO / founder outreach can be refined once the technology deck and final profile are available.</li>
-      </ul>
-      <div class="next"><strong>Next:</strong> review the tech deck, sharpen the CEO scorecard and convert the existing map into the first targeted outreach batch.</div>
+    
+    <div class="pool-card">
+      <div class="pool-top"><div><h3>Health, Biotech & Life Science</h3><div class="meta">Early cohort</div></div><span class="tiny">20 sourced</span></div>
+      <div class="stats">
+        <div><b>6</b><span>accepted</span></div>
+        <div><b>1</b><span>replies</span></div>
+        <div><b>0</b><span>progressed</span></div>
+      </div>
+      <div class="progress"><i style="width:30%"></i></div>
+      <div class="note">6/20 accepted (30%) · 1/20 replied (5%)<br><strong>Still maturing</strong></div>
+    </div>
+    
+    <div class="pool-card">
+      <div class="pool-top"><div><h3>Energy, Climate & Resources</h3><div class="meta">Early cohort</div></div><span class="tiny">29 sourced</span></div>
+      <div class="stats">
+        <div><b>14</b><span>accepted</span></div>
+        <div><b>5</b><span>replies</span></div>
+        <div><b>1</b><span>progressed</span></div>
+      </div>
+      <div class="progress"><i style="width:48%"></i></div>
+      <div class="note">14/29 accepted (48%) · 5/29 replied (17%)<br><strong>Wouter Draijer</strong></div>
+    </div>
     </div>
   </div>
 
-  <div class="section-title">Breakdown by talent pool</div>
-  <div class="grid">
-    <div class="pool">
-      <h3>Computing, Chips &amp; AI</h3>
-      <div class="meta">Spain · mature vertical-specific campaign</div>
-      <div class="metric-row"><span>Outreach sent</span><span>41</span></div>
-      <div class="metric-row"><span>Accepted</span><span>23</span></div>
-      <div class="progress"><div class="bar" style="width:56%"></div></div>
-      <div class="metric-row"><span>Replies</span><span>8</span></div>
-      <div class="metric-row"><span>Direct / qualified interest</span><span>4+</span></div>
-      <div class="metric-row"><span>Progressed profiles</span><span>2</span></div>
-      <div class="metric-row"><span>Key conversions</span><span>Domenico, Stijn</span></div>
-    </div>
 
-    <div class="pool">
-      <h3>Robotics &amp; Autonomous Systems</h3>
-      <div class="meta">Spain · mature vertical-specific campaign</div>
-      <div class="metric-row"><span>Outreach sent</span><span>15</span></div>
-      <div class="metric-row"><span>Accepted</span><span>14</span></div>
-      <div class="progress"><div class="bar" style="width:93%"></div></div>
-      <div class="metric-row"><span>Replies</span><span>10</span></div>
-      <div class="metric-row"><span>Direct interest</span><span>6+</span></div>
-      <div class="metric-row"><span>Future / keep warm</span><span>2</span></div>
-      <div class="metric-row"><span>Progressed profiles</span><span>1</span></div>
-      <div class="metric-row"><span>Quality gate outcome</span><span>Pep → Not Founders</span></div>
+  <div class="section">
+    <h2>PLANARIS · COO / Co-Founder</h2>
+    <div class="funnel">
+      <div class="metric"><div class="n">37</div><div class="l">International sourced profiles</div></div>
+      <div class="metric"><div class="n">11</div><div class="l">LinkedIn replies identified in inbox review</div></div>
+      <div class="metric"><div class="n">6</div><div class="l">Profiles currently in Manatal</div></div>
+      <div class="metric"><div class="n">1</div><div class="l">Matchmaking</div></div>
     </div>
+    <div class="section-intro" style="margin-top:15px">Current Manatal vacancy:</div>
+    <div class="table"><table>
+      <thead><tr><th>Profile</th><th>Current role</th><th>Company</th><th>Stage</th></tr></thead>
+      <tbody><tr><td><strong>Vicente González Negro</strong></td><td>Chief Operating Officer</td><td>FOSSA Systems</td><td><span class="pill gray">New Candidate</span></td></tr>
+<tr><td><strong>Michiel Kruijff</strong></td><td>CTO ZemQuest (co-founder)</td><td>ZemQuest</td><td><span class="pill gray">New Candidate</span></td></tr>
+<tr><td><strong>Carlos Carretero Sánchez</strong></td><td>Head of Programs and Operations (COO)</td><td>Airbus Crisa</td><td><span class="pill gray">New Candidate</span></td></tr>
+<tr><td><strong>Alberto N.</strong></td><td>Chief Operating Officer | Founding partner</td><td>Aurea Avionics</td><td><span class="pill gray">New Candidate</span></td></tr>
+<tr><td><strong>Arjan Wouter (Jim) Volp</strong></td><td>Head of Operations New Space</td><td>MBS GmbH</td><td><span class="pill green">Shortlisted · First Call</span></td></tr>
+<tr><td><strong>Álvaro Escarpenter Aubarede</strong></td><td>COO &amp; CTO</td><td>Alpha Unmanned Systems</td><td><span class="pill purple">Matchmaking</span></td></tr></tbody>
+    </table></div>
+    <div class="callout"><strong>Live search context:</strong> Jim Volp has been presented to Consuelo/Miguel. Arne Matthyssen is warm for a call. Bob Hagenaars and Robert Damm are reactivation opportunities after the Spanish requirement was relaxed. Miguel Goncalves remains an active conversation; Silvio Patruno is keep-warm.</div>
+  </div>
 
-    <div class="pool">
-      <h3>Health, Biotech &amp; Life Science</h3>
-      <div class="meta">Spain · new individual outreach batch launched 15 Oct</div>
-      <div class="metric-row"><span>Outreach sent</span><span>20</span></div>
-      <div class="metric-row"><span>Accepted</span><span>6</span></div>
-      <div class="progress"><div class="bar" style="width:30%"></div></div>
-      <div class="metric-row"><span>Replies</span><span>1</span></div>
-      <div class="metric-row"><span>Direct / qualified interest</span><span>0–1</span></div>
-      <div class="metric-row"><span>Progressed profiles</span><span>0</span></div>
-      <div class="metric-row"><span>Status</span><span>Too early to judge</span></div>
-    </div>
-
-    <div class="pool">
-      <h3>Energy, Climate &amp; Resources</h3>
-      <div class="meta">Spain · 20 curated individual invites + 9 Boolean / Dripify invites</div>
-      <div class="metric-row"><span>Outreach sent</span><span>29</span></div>
-      <div class="metric-row"><span>Accepted</span><span>14</span></div>
-      <div class="progress"><div class="bar" style="width:48%"></div></div>
-      <div class="metric-row"><span>Replies</span><span>5</span></div>
-      <div class="metric-row"><span>Active call conversations</span><span>2</span></div>
-      <div class="metric-row"><span>Progressed profiles</span><span>1</span></div>
-      <div class="metric-row"><span>Key conversion</span><span>Wouter Draijer</span></div>
+  <div class="section">
+    <h2>Active venture delivery</h2>
+    <div class="project-grid">
+      <div class="project">
+        <h3>PLANARIS</h3><div class="meta">COO / Co-Founder + technical delivery</div>
+        <ul>
+          <li>International COO search active across NL / DE / UK / broader Europe.</li>
+          <li>Space/satellite operator experience remains the key filter, not title alone.</li>
+          <li>Spanish is now nice-to-have rather than a hard blocker.</li>
+          <li>Jim Volp presented; Álvaro Escarpenter currently at Matchmaking.</li>
+        </ul>
+        <div class="next"><strong>Next:</strong> move the strongest live LinkedIn conversations into Manatal and convert warm profiles into calls.</div>
+      </div>
+      <div class="project">
+        <h3>BRAIDSTENT</h3><div class="meta">CTO / technical co-founder</div>
+        <ul>
+          <li>Role-specific MedTech technical sourcing remains active.</li>
+          <li>Jesús García Anguita is now Waiting for Project in the Founder Pool.</li>
+          <li>Julio Díaz Fernández is a strong current progression / Consuelo-intro lead.</li>
+        </ul>
+        <div class="next"><strong>Next:</strong> keep strong MedTech builders inside the vacancy and preserve Founder Pool attribution.</div>
+      </div>
+      <div class="project">
+        <h3>AUMMIS · Valencia</h3><div class="meta">CEO / Co-Founder market calibration</div>
+        <ul>
+          <li>36 LinkedIn profiles consolidated in the latest Female Health / MedTech map.</li>
+          <li>Market map is ready for Consuelo to review with the scientific team.</li>
+          <li>Direct leads, benchmarks and ecosystem connectors are separated.</li>
+          <li>Targeted outreach should follow the scientific-team calibration.</li>
+        </ul>
+        <div class="next"><strong>Next:</strong> finalise the CEO scorecard and convert the strongest direct leads into the first outreach batch.</div>
+        <a class="project-link" href="https://wouter-does-recruitment.github.io/aummis/" target="_blank" rel="noopener">Open AUMMIS market map ↗</a>
+      </div>
     </div>
   </div>
 
-  <div class="section-title">Reply intelligence</div>
-  <div class="mini-grid">
-    <div class="mini-card"><div class="label">Unique replies</div><div class="num">24</div><div class="foot">Combined LinkedIn / Dripify replies across all four pools</div></div>
-    <div class="mini-card"><div class="label">Direct / qualified interest</div><div class="num">12+</div><div class="foot">Direct interest, call interest, more-info requests, CV shared or explicit openness</div></div>
-    <div class="mini-card"><div class="label">Calls still scheduled</div><div class="num">2</div><div class="foot">Energy pool follow-up calls with Tuncay Koç and Javier Peña Pérez. Wouter Draijer has progressed to Staff Interview.</div></div>
-    <div class="mini-card"><div class="label">Opportunity / ecosystem value</div><div class="num">2+</div><div class="foot">Outreach is surfacing connector value and even Call for Technologies opportunities</div></div>
-  </div>
-
-  <div class="table-card">
-    <table>
-      <thead>
-        <tr>
-          <th>Signal</th>
-          <th>Examples</th>
-          <th>Why it matters</th>
-        </tr>
-      </thead>
+  <div class="section">
+    <h2>What the data is telling us</h2>
+    <div class="table"><table>
+      <thead><tr><th>Signal</th><th>Evidence</th><th>Implication</th></tr></thead>
       <tbody>
-        <tr>
-          <td><span class="pill p-green">Direct / qualified interest</span></td>
-          <td>Domenico, Stijn, Jakob, Yair, Xavier, Ryaan, Pep Lluis, Jordi, Veronica, Wouter Draijer, Javier Peña, Tuncay Koç</td>
-          <td>Real founder conversations, not just connection accepts</td>
-        </tr>
-        <tr>
-          <td><span class="pill p-purple">Call scheduled</span></td>
-          <td>Tuncay Koç (tomorrow), Javier Peña Pérez (Friday)</td>
-          <td>Energy is already moving from reply quality into real qualification conversations; Wouter Draijer has now progressed to Staff Interview</td>
-        </tr>
-        <tr>
-          <td><span class="pill p-blue">Future / keep warm</span></td>
-          <td>George, Vasilii, Rubén</td>
-          <td>Builds a long-term founder bench even when timing is not right today</td>
-        </tr>
-        <tr>
-          <td><span class="pill p-amber">Connector / ecosystem</span></td>
-          <td>José Manuel, Vasilii</td>
-          <td>Can refer founders, share projects or create ecosystem value</td>
-        </tr>
-        <tr>
-          <td><span class="pill p-amber">Opportunity generated</span></td>
-          <td>Veronica Sanz</td>
-          <td>Outreach can surface venture opportunities as well as candidates</td>
-        </tr>
-        <tr>
-          <td><span class="pill p-gray">Neutral / polite</span></td>
-          <td>Guillermo, Natalia Castejon Savordelli, Pablo M. Vidarte</td>
-          <td>Connection made, positive signal, but no clear next-step intent yet</td>
-        </tr>
+        <tr><td><strong>Founder sourcing is now a real pipeline</strong></td><td>15 Founder Pool profiles, with 6 at Staff Interview and 9 Waiting for Project.</td><td>Measure current stage separately from the original sourcing conversion.</td></tr>
+        <tr><td><strong>Wouter attribution is broader than the old dashboard showed</strong></td><td>8 progressed founder profiles, including Anna Warchalowska.</td><td>Use historical attribution plus current Manatal stage instead of one static outcome label.</td></tr>
+        <tr><td><strong>PLANARIS activity is underrepresented in ATS</strong></td><td>37 sourced internationally, with 6 currently in Manatal.</td><td>Warm outreach conversations should be moved into the vacancy earlier for cleaner tracking.</td></tr>
       </tbody>
-    </table>
+    </table></div>
   </div>
 
-  <div class="section-title">What the replies are telling us</div>
-  <div class="table-card">
-    <table>
-      <thead>
-        <tr>
-          <th>Insight</th>
-          <th>Evidence from replies</th>
-          <th>Implication</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Vertical-specific outreach resonates</td>
-          <td>Robotics produced 10 replies from 15 outreaches and 14 accepts.</td>
-          <td>Smaller, tightly-defined pools still generate the strongest engagement.</td>
-        </tr>
-        <tr>
-          <td>Energy is quickly creating live conversations</td>
-          <td>5 replies from 29 outreaches, with 3 qualification calls generated and Wouter Draijer already progressed to Staff Interview.</td>
-          <td>The Energy pool is beginning to convert from outreach into the Staff Interview funnel.</td>
-        </tr>
-        <tr>
-          <td>Interest is broader than active job seeking</td>
-          <td>George, Vasilii and Rubén are not looking now, but explicitly want to stay connected for future opportunities.</td>
-          <td>The Founder Radar is building a long-term bench, not only an immediate candidate funnel.</td>
-        </tr>
-        <tr>
-          <td>Outreach creates ecosystem value too</td>
-          <td>Veronica surfaced a potential spin-off / technology opportunity; José Manuel and Vasilii show connector / referral potential.</td>
-          <td>Talent Pool outreach can generate ventures, referrals and ecosystem intelligence in addition to candidates.</td>
-        </tr>
-        <tr>
-          <td>Quality control is visible</td>
-          <td>Pep responded positively and registered, but was placed in Not Founders after review.</td>
-          <td>Founder Radar registration is an intake signal, not an automatic Staff Interview. Experienced-founder criteria remain a real gate.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="section-title">Campaign insight</div>
-  <div class="table-card">
-    <table>
-      <thead>
-        <tr>
-          <th>Talent pool</th>
-          <th>Signal</th>
-          <th>Interpretation</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Computing, Chips &amp; AI</td>
-          <td>41 outreach → 23 accepted → 8 replies</td>
-          <td>Broader pool, useful founder discovery, but lower response density than Robotics</td>
-        </tr>
-        <tr>
-          <td>Robotics &amp; Autonomous Systems</td>
-          <td>15 outreach → 14 accepted → 10 replies</td>
-          <td>Very strong resonance. Vertical-specific sourcing is generating the clearest founder intent</td>
-        </tr>
-        <tr>
-          <td>Health, Biotech &amp; Life Science</td>
-          <td>20 outreach → 6 accepted → 1 reply</td>
-          <td>Too early to judge. The outreach batch is new and needs more time to mature.</td>
-        </tr>
-        <tr>
-          <td>Energy, Climate &amp; Resources</td>
-          <td>29 outreach → 14 accepted → 5 replies → 3 calls generated → 1 Staff Interview</td>
-          <td>Early but promising. Wouter Draijer is the first Energy profile to convert into Staff Interview.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="section-title">Staff Interview attribution</div>
-  <div class="table-card">
-    <table>
-      <thead>
-        <tr>
-          <th>Profile</th>
-          <th>Source route</th>
-          <th>Current outcome</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Domenico Tulli</td><td>DeepTech Founder Pool outreach</td><td><span class="pill p-green">Staff Interview</span></td></tr>
-        <tr><td>Jakob Saalfrank</td><td>Robotics &amp; Autonomous Systems outreach</td><td><span class="pill p-green">Staff Interview</span></td></tr>
-        <tr><td>Jesús García Anguita</td><td>BraidStent / role-specific sourcing</td><td><span class="pill p-green">Staff Interview</span></td></tr>
-        <tr><td>Andres Fernando Amarillo Espitia</td><td>Broader Wouter sourcing pool</td><td><span class="pill p-green">Staff Interview</span></td></tr>
-        <tr><td>Javier Matesanz</td><td>Inbound from Wouter market / network activity</td><td><span class="pill p-green">Staff Interview</span></td></tr>
-        <tr><td>Stijn Goossens</td><td>Computing, Chips &amp; AI outreach</td><td><span class="pill p-blue">Waiting for Project</span></td></tr>
-        <tr><td>Wouter Draijer</td><td>Energy, Climate &amp; Resources outreach</td><td><span class="pill p-green">Staff Interview</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="section-title">Quality gate</div>
-  <div class="table-card">
-    <table>
-      <thead>
-        <tr>
-          <th>Profile</th>
-          <th>Outcome</th>
-          <th>Reason</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Pep Lluis Negre</td>
-          <td><span class="pill p-blue">Talent Pool · Not Founders</span></td>
-          <td>Strong robotics / technical leadership profile, but does not meet experienced-founder threshold</td>
-        </tr>
-        <tr>
-          <td>Consultant / freelance profiles in Energy</td>
-          <td><span class="pill p-gray">Excluded from current push</span></td>
-          <td>Too consultant / ZZP / freelance-heavy or too far from the Founder Radar brief</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="footer-note">
-    <div class="smallcaps">Data sources</div>
-    LinkedIn message export for reply quality and conversation signals, Dripify for campaign activity and reply counts, and Manatal for Founder Radar, talent-pool review and Staff Interview progression. 
-    Energy update: Wouter Draijer has progressed to Staff Interview. Calls remain scheduled with Tuncay Koç (tomorrow) and Javier Peña Pérez (Friday).
+  <div class="footer">
+    <strong>Sources:</strong> Manatal exports for DeepTech Founders, Talent Pool Not Founders and PLANARIS COO; Dripify export for PLANARIS sourcing; previous dashboard for historical Talent Pool campaign cohorts; LinkedIn inbox review for live reply status. Snapshot updated 28 Oct 2026.
   </div>
 </div>
 </body>
