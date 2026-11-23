@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Collider | Talent Pools | 23 Nov 2026</title>
+<style>
+:root{--purple:#6d3df5;--text:#111827;--muted:#6b7280;--line:#e5e7eb;--bg:#f6f7f9}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif}
+.wrap{max-width:1180px;margin:auto;padding:32px 22px 70px}h1{font-size:32px;letter-spacing:-.03em;margin:16px 0 8px}h2{font-size:19px;margin:32px 0 12px}
+p{line-height:1.55}a{color:var(--purple)}.muted{color:var(--muted);font-size:13px}.eyebrow{font-size:11px;letter-spacing:.09em;font-weight:800;color:var(--purple);text-transform:uppercase}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:19px}
+.big{font-size:39px;font-weight:850;color:var(--purple);margin:9px 0 4px}.label{font-size:12px;color:var(--muted)}.table{overflow:auto;background:#fff;border:1px solid var(--line);border-radius:16px}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:14px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:11px;text-transform:uppercase;color:var(--muted);background:#fafafa}tr:last-child td{border:0}
+.pill{font-size:11px;border-radius:20px;background:#f5f3ff;color:#5b21b6;padding:5px 9px;white-space:nowrap}
+.notice{background:#fff;border:1px solid var(--line);padding:15px 17px;border-radius:14px;margin-top:18px;font-size:13px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:15px}.small{font-size:12px;color:var(--muted)}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.split{grid-template-columns:1fr}}
+@media(max-width:480px){.grid{grid-template-columns:1fr 1fr}.big{font-size:32px}}
+</style></head><body><main class="wrap">
+<a href="./index.html">← Operating dashboard</a>
+<div class="eyebrow" style="margin-top:23px">The Collider / Talent intelligence</div>
+<h1>Talent Pools</h1>
+<p class="muted">Manatal snapshot: 23 November 2026. Dripify: pending first successful API sync. All metrics on this page are aggregate; no candidate-level data is published.</p>
+<div class="grid">
+<div class="card"><div class="label">Deeptech Founder Pool</div><div class="big">18</div><div class="small">7 Staff Interview · 9 Waiting for Project · 2 Potential</div></div>
+<div class="card"><div class="label">Materials Pool</div><div class="big">50</div><div class="small">All currently New Candidates</div></div>
+<div class="card"><div class="label">Not Founders Pool</div><div class="big">10</div><div class="small">9 New Candidates · 1 Email Candidate</div></div>
+<div class="card"><div class="label">Legacy Founders Radar</div><div class="big">192</div><div class="small">Separate historical pipeline, not added to unique pool total</div></div>
+</div>
+<div class="notice"><strong>Interpretation:</strong> These are Manatal job-match counts, not necessarily unique people. The Deeptech Founder Pool and legacy Founders Radar may overlap. Do not sum them as unique founders. Dripify campaign leads are a separate outreach metric.</div>
+<h2>Current pool breakdown</h2>
+<div class="table"><table><thead><tr><th>Manatal pool</th><th>Records</th><th>Pipeline distribution</th><th>Source</th></tr></thead><tbody>
+<tr><td><strong>Talent Pool Deeptech Founders</strong></td><td>18</td><td>7 Entrevista Staff; 9 En espera de Proyecto; 2 Perfil Potencial</td><td><span class="pill">Live Manatal query</span></td></tr>
+<tr><td><strong>Talent Pool Materials, Manufacturing &amp; Advanced Industry</strong></td><td>50</td><td>50 New Candidates</td><td><span class="pill">Live Manatal query</span></td></tr>
+<tr><td><strong>Talent Pool Not Founders</strong></td><td>10</td><td>9 New Candidates; 1 Email candidate</td><td><span class="pill">Live Manatal query</span></td></tr>
+<tr><td><strong>Deeptech Founders Radar</strong></td><td>192</td><td>103 Applications (Pre Pool); 31 Talent Pool; 18 Entrevistado; 1 Scouting Proactivo; 8 Data Base; 5 Business Validation; 5 Matchmaking; 21 Collider Portfolio</td><td><span class="pill">Live Manatal query</span></td></tr>
+</tbody></table></div>
+<h2>Founder Pool funnel</h2>
+<div class="grid">
+<div class="card"><div class="label">Staff Interview</div><div class="big">7</div><div class="small">39% of 18 pool records</div></div>
+<div class="card"><div class="label">Waiting for Project</div><div class="big">9</div><div class="small">50% of 18 pool records</div></div>
+<div class="card"><div class="label">Potential Profile</div><div class="big">2</div><div class="small">11% of 18 pool records</div></div>
+<div class="card"><div class="label">Stage coverage</div><div class="big">100%</div><div class="small">All 18 matches classified</div></div>
+</div>
+<h2>Dripify campaign pulse</h2>
+<p class="muted">Materials and AUMMIS outreach are configured for API sync. Figures appear only after GitHub Actions successfully retrieves and publishes the aggregate snapshot. Reply rate does not indicate sentiment.</p>
+<div id="dripify" class="split"><div class="card">Awaiting first successful Dripify sync.</div></div>
+<h2>What changed since the previous dashboard?</h2>
+<div class="table"><table><thead><tr><th>Signal</th><th>Previous documented snapshot</th><th>23 Nov Manatal</th></tr></thead><tbody>
+<tr><td>Founder Pool size</td><td>15 (17 Nov dashboard)</td><td><strong>18</strong> (+3)</td></tr>
+<tr><td>Staff Interview stage</td><td>6 (17 Nov dashboard)</td><td><strong>7</strong> (+1)</td></tr>
+<tr><td>Waiting for Project stage</td><td>9 (17 Nov dashboard)</td><td><strong>9</strong> (unchanged)</td></tr>
+<tr><td>Materials Pool</td><td>No comparable verified ATS total in prior headline</td><td><strong>50</strong> in New Candidates</td></tr>
+</tbody></table></div>
+<div class="notice"><strong>Data quality:</strong> This is a verified point-in-time Manatal snapshot, not a continuously refreshing Manatal feed. Only Dripify aggregates are designed for scheduled updates. The previous dashboard contains historical campaign estimates; those have not been reclassified as live API data. Candidate attribution to Wouter requires separate creator/source verification.</div>
+<p class="small" style="margin-top:32px">Manatal job IDs: Founder Pool 4190187; Materials 4589209; Not Founders 4359539; legacy Founders Radar 3114077. Dripify campaign IDs: Materials 2161184; AUMMIS referrals 2151502; AUMMIS candidates 2151441.</p>
+</main><script>
+(async()=>{const el=document.getElementById('dripify');try{const r=await fetch('./data/dripify-summary.json',{cache:'no-store'});if(!r.ok)throw Error('No successful sync yet');const d=await r.json();if(!Array.isArray(d.campaigns)||d.schemaVersion!==1)throw Error('Unexpected data');el.replaceChildren();for(const c of d.campaigns){const div=document.createElement('div');div.className='card';const h=document.createElement('h3');h.textContent=c.label;const p=document.createElement('p');p.textContent=`${c.totalLeads} campaign leads · ${c.contactedLeads} contacted · ${c.replyRateLeads} replied (${c.replyRate}%)`;div.append(h,p);el.append(div)}const p=document.createElement('p');p.className='small';p.textContent='Dripify last updated: '+new Date(d.updatedAt).toLocaleString('en-GB');el.append(p)}catch(e){el.textContent='Awaiting first successful Dripify sync; no campaign numbers are shown until verified.'}})();
+</script></body></html>
