@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Collider | Dripify Outreach</title>
+<style>
+:root{font-family:Inter,system-ui,-apple-system,sans-serif;color:#111827;background:#f6f7f9}
+*{box-sizing:border-box}body{margin:0}.wrap{max-width:1100px;margin:0 auto;padding:36px 24px}
+a{color:#6d3df5;text-decoration:none}.subtitle,.muted{color:#6b7280}.subtitle{line-height:1.6}
+h1{font-size:32px;letter-spacing:-.03em;margin:14px 0 6px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:26px}
+.card{background:white;padding:22px;border:1px solid #e5e7eb;border-radius:17px}
+.card h2{font-size:17px;margin:0 0 18px}.total{font-size:40px;font-weight:800;color:#6d3df5}
+.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-top:19px}
+.metric{background:#f9fafb;border-radius:10px;padding:12px}.metric b{display:block;font-size:22px}
+.metric span,.label{font-size:12px;color:#6b7280}
+.status{font-size:13px;color:#6b7280;margin-top:20px}.foot{font-size:12px;color:#6b7280;margin-top:32px}
+@media(max-width:800px){.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main class="wrap">
+<a href="./index.html">← Main Collider dashboard</a>
+<h1>Dripify outreach</h1>
+<p class="subtitle">Automatic campaign-level metrics. No candidate identities, LinkedIn profiles or messages are published here.</p>
+<p id="status" class="status" role="status">Loading aggregate statistics…</p>
+<div id="cards" class="cards"></div>
+<p class="foot">Metrics are Dripify campaign totals, not deduplicated people across campaigns. Reply rate indicates a reply, not necessarily positive interest. Manatal remains the source of truth for recruitment stages.</p>
+</main>
+<script>
+const number = new Intl.NumberFormat('en-GB');
+const percent = x => typeof x === 'number' ? x.toFixed(1) + '%' : '—';
+const metric = (label, value) => {
+  const box = document.createElement('div'); box.className='metric';
+  const b=document.createElement('b');b.textContent=value;
+  const span=document.createElement('span');span.textContent=label;
+  box.append(b,span);return box;
+};
+async function load(){
+  const status=document.getElementById('status'), container=document.getElementById('cards');
+  try{
+    const response=await fetch('./data/dripify-summary.json',{cache:'no-store'});
+    if(!response.ok)throw new Error('No successful sync snapshot is available yet.');
+    const data=await response.json();
+    if(data.schemaVersion!==1 || !Array.isArray(data.campaigns))throw new Error('Unexpected snapshot format.');
+    const updated = new Date(data.updatedAt);
+    status.textContent='Last synced: '+(Number.isNaN(updated.getTime())?'unknown':updated.toLocaleString('en-GB',{dateStyle:'medium',timeStyle:'short',timeZone:'Europe/Madrid'})+' (Barcelona)');
+    for(const c of data.campaigns){
+      const card=document.createElement('section');card.className='card';
+      const h=document.createElement('h2');h.textContent=c.label;
+      const top=document.createElement('div');top.className='total';top.textContent=number.format(c.totalLeads);
+      const lab=document.createElement('div');lab.className='label';lab.textContent='Total campaign leads';
+      const metrics=document.createElement('div');metrics.className='metrics';
+      metrics.append(
+        metric('Contacted',number.format(c.contactedLeads)),
+        metric('Accepted leads',number.format(c.acceptanceRateLeads)),
+        metric('Acceptance rate',percent(c.acceptanceRate)),
+        metric('Replied leads',number.format(c.replyRateLeads)),
+        metric('Reply rate',percent(c.replyRate)),
+        metric('Lead lists',number.format(c.leadListsCount)));
+      card.append(h,top,lab,metrics);container.append(card);
+    }
+  }catch(e){status.textContent=e.message+' Run the GitHub Actions workflow after merging the setup.';}
+}
+load();
+</script></body></html>
