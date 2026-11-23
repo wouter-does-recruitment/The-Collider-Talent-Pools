@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-11-23T21:57:39+00:00",
+  "source": "Dripify Open API (aggregate campaign statistics)",
+  "campaigns": [
+    {
+      "id": 2161184,
+      "label": "Materials",
+      "totalLeads": 46,
+      "contactedLeads": 45,
+      "acceptanceRate": 63.4,
+      "acceptanceRateLeads": 26,
+      "replyRate": 37.8,
+      "replyRateLeads": 17,
+      "leadListsCount": 1,
+      "active": true,
+      "leadStatusBreakdown": {
+        "inProgress": 1,
+        "finished": 16,
+        "failed": 1,
+        "blacklisted": 0,
+        "gettingReady": 0,
+        "waiting": 15,
+        "paused": 13,
+        "uploading": 0,
+        "transferred": 0
+      }
+    },
+    {
+      "id": 2151502,
+      "label": "AUMMIS Referrals",
+      "totalLeads": 19,
+      "contactedLeads": 17,
+      "acceptanceRate": 64.3,
+      "acceptanceRateLeads": 9,
+      "replyRate": 35.3,
+      "replyRateLeads": 6,
+      "leadListsCount": 2,
+      "active": true,
+      "leadStatusBreakdown": {
+        "inProgress": 0,
+        "finished": 8,
+        "failed": 2,
+        "blacklisted": 0,
+        "gettingReady": 0,
+        "waiting": 5,
+        "paused": 4,
+        "uploading": 0,
+        "transferred": 0
+      }
+    },
+    {
+      "id": 2151441,
+      "label": "AUMMIS Candidates",
+      "totalLeads": 20,
+      "contactedLeads": 20,
+      "acceptanceRate": 88.9,
+      "acceptanceRateLeads": 16,
+      "replyRate": 40.0,
+      "replyRateLeads": 8,
+      "leadListsCount": 3,
+      "active": true,
+      "leadStatusBreakdown": {
+        "inProgress": 2,
+        "finished": 8,
+        "failed": 0,
+        "blacklisted": 0,
+        "gettingReady": 0,
+        "waiting": 2,
+        "paused": 8,
+        "uploading": 0,
+        "transferred": 0
+      }
+    }
+  ]
+}
