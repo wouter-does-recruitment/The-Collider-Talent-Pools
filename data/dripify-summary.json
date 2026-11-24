@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-23T21:57:39+00:00",
+  "updatedAt": "2026-11-24T17:46:50+00:00",
   "source": "Dripify Open API (aggregate campaign statistics)",
   "campaigns": [
     {
@@ -56,8 +56,8 @@
       "contactedLeads": 20,
       "acceptanceRate": 88.9,
       "acceptanceRateLeads": 16,
-      "replyRate": 40.0,
-      "replyRateLeads": 8,
+      "replyRate": 45.0,
+      "replyRateLeads": 9,
       "leadListsCount": 3,
       "active": true,
       "leadStatusBreakdown": {
