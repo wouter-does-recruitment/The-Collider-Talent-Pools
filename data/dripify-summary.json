@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-24T17:46:50+00:00",
+  "updatedAt": "2026-11-25T17:15:52+00:00",
   "source": "Dripify Open API (aggregate campaign statistics)",
   "campaigns": [
     {
@@ -29,17 +29,17 @@
     {
       "id": 2151502,
       "label": "AUMMIS Referrals",
-      "totalLeads": 19,
-      "contactedLeads": 17,
-      "acceptanceRate": 64.3,
-      "acceptanceRateLeads": 9,
-      "replyRate": 35.3,
-      "replyRateLeads": 6,
-      "leadListsCount": 2,
+      "totalLeads": 21,
+      "contactedLeads": 19,
+      "acceptanceRate": 66.7,
+      "acceptanceRateLeads": 10,
+      "replyRate": 36.8,
+      "replyRateLeads": 7,
+      "leadListsCount": 3,
       "active": true,
       "leadStatusBreakdown": {
-        "inProgress": 0,
-        "finished": 8,
+        "inProgress": 1,
+        "finished": 9,
         "failed": 2,
         "blacklisted": 0,
         "gettingReady": 0,
@@ -54,10 +54,10 @@
       "label": "AUMMIS Candidates",
       "totalLeads": 20,
       "contactedLeads": 20,
-      "acceptanceRate": 88.9,
-      "acceptanceRateLeads": 16,
-      "replyRate": 45.0,
-      "replyRateLeads": 9,
+      "acceptanceRate": 94.4,
+      "acceptanceRateLeads": 17,
+      "replyRate": 50.0,
+      "replyRateLeads": 10,
       "leadListsCount": 3,
       "active": true,
       "leadStatusBreakdown": {
@@ -66,8 +66,8 @@
         "failed": 0,
         "blacklisted": 0,
         "gettingReady": 0,
-        "waiting": 2,
-        "paused": 8,
+        "waiting": 1,
+        "paused": 9,
         "uploading": 0,
         "transferred": 0
       }
