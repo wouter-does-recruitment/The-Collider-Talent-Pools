@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-27T16:40:57+00:00",
+  "updatedAt": "2026-11-28T15:32:56+00:00",
   "source": "Dripify Open API (aggregate campaign statistics)",
   "campaigns": [
     {
@@ -15,8 +15,8 @@
       "leadListsCount": 1,
       "active": true,
       "leadStatusBreakdown": {
-        "inProgress": 1,
-        "finished": 16,
+        "inProgress": 0,
+        "finished": 17,
         "failed": 1,
         "blacklisted": 0,
         "gettingReady": 0,
@@ -61,8 +61,8 @@
       "leadListsCount": 3,
       "active": true,
       "leadStatusBreakdown": {
-        "inProgress": 2,
-        "finished": 8,
+        "inProgress": 1,
+        "finished": 9,
         "failed": 0,
         "blacklisted": 0,
         "gettingReady": 0,
